@@ -1,4 +1,4 @@
-<field-mappolyline>
+<field-map-polyline>
 
     <div class="uk-alert" if="{!apiready}">
         Loading maps api...
@@ -109,4 +109,4 @@
 
     </script>
 
-</field-mappolyline>
+</field-map-polyline>
