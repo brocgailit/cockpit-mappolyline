@@ -84,9 +84,11 @@
                     });
                     map.addControl(drawControl);
 
+                    map.on(L.Draw.Event.EDITSTART, function (event) {
+                        drawnItems.clearLayers();
+                    })
                     map.on(L.Draw.Event.CREATED, function (event) {
                         var layer = event.layer;
-                        drawnItems.clearLayers();
                         drawnItems.addLayer(layer);
                         var polyline = layer
                             .getLatLngs()
