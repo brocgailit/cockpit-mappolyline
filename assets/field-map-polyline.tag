@@ -71,7 +71,11 @@
                     var drawControl = new L.Control.Draw({
                         position: 'topright',
                         draw: {
-                            polyline: true
+                            polyline: true,
+                            polygon: false,
+                            circle: false,
+                            square: false,
+                            marker: false
                         },
                         edit: {
                             featureGroup: drawnItems
