@@ -28,7 +28,7 @@
             'https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css'
         ]);
 
-        var $this = this, defaultpos = {lat:45.4886, lng:-122.6419};
+        var $this = this, defaultpos = {address: 'Heavy Craft', lat:45.4886, lng:-122.6419};
 
         this.latlng = defaultpos;
 
