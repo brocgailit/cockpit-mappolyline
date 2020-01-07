@@ -74,6 +74,7 @@
                             polyline: true,
                             polygon: false,
                             circle: false,
+                            circlemarker: false,
                             rectangle: false,
                             marker: false
                         },
