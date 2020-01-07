@@ -88,7 +88,7 @@
                         console.log(event);
                         var layer = event.layer;
                         drawnItems.addLayer(layer);
-                        console.log(drawnItems);
+                        console.log(layer.getLatLngs());
                     })
 
                     var pla = places({
