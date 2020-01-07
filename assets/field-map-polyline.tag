@@ -40,6 +40,8 @@
 
             if (value && value.length) {
                 var [[lat, lng]] = value;
+
+                console.log(value, lat, lng)
                 this.latlng = { lat, lng };
             }
 
