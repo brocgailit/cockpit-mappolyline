@@ -72,7 +72,7 @@
                         position: 'topright',
                         draw: {
                             polyline: true
-                        }
+                        },
                         edit: {
                             featureGroup: drawnItems
                         }
