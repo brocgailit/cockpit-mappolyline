@@ -16,7 +16,7 @@
 
     <script>
 
-        var map, marker, ;
+        var map, marker;
 
         var locale = document.documentElement.lang.toUpperCase();
 
