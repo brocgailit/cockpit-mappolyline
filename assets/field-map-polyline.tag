@@ -16,7 +16,7 @@
 
     <script>
 
-        var map, marker;
+        var map, marker, ;
 
         var locale = document.documentElement.lang.toUpperCase();
 
@@ -28,7 +28,7 @@
             'https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css'
         ]);
 
-        var $this = this, defaultpos = {lat:53.55909862554551, lng:9.998652343749995};
+        var $this = this, defaultpos = {lat:45.5051, lng:-122.6750};
 
         this.latlng = defaultpos;
 
