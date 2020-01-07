@@ -40,8 +40,6 @@
 
             if (value && value.length) {
                 var [[lat, lng]] = value;
-
-                console.log(value, lat, lng)
                 this.latlng = { lat, lng };
             }
 
@@ -86,7 +84,7 @@
                     });
                     map.addControl(drawControl);
 
-                    var initialPolyline = L.polyline($this.polyline, {color: 'red'}).addTo(drawnItems);
+                    var initialPolyline = L.polyline($this.polyline, {color: '#d2451e'}).addTo(drawnItems);
                     map.fitBounds(initialPolyline.getBounds());
 
                     map.on('draw:drawstart', function (event) {
@@ -99,6 +97,10 @@
                             .getLatLngs()
                             .map(({lat, lng}) => [lat, lng]);
                         $this.$setValue($this.polyline);
+                    })
+
+                    map.on(L.Draw.Event.DELETED, function (event) {
+                        $this.$setValue([]);
                     })
 
                     var pla = places({
