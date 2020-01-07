@@ -85,17 +85,17 @@
                     map.addControl(drawControl);
 
                     map.on(L.Draw.Event.CREATED, function (event) {
-                        console.log(event);
                         var layer = event.layer;
+                        drawnItems.clearLayers();
                         drawnItems.addLayer(layer);
-                        console.log(layer.getLatLngs());
+                        var polyline = layer.getLatLngs().map(({lat, lng} => [lat, lng]));
+                        $this.$setValue(polyline);
                     })
 
                     var pla = places({
                         container: $this.refs.autocomplete
                     }).on('change', function(e) {
                         e.suggestion.latlng.address = e.suggestion.value;
-                        $this.$setValue(e.suggestion.latlng);
                         map.panTo(e.suggestion.latlng);
                         pla.close();
                         pla.setVal('');
@@ -111,7 +111,6 @@
                         lng: parseFloat(coords[2])
                       };
 
-                      $this.$setValue(latlng);
                       map.panTo(latlng);
                       pla.close();
                       pla.setVal('');
