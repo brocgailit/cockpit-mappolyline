@@ -88,6 +88,7 @@
                         console.log(event);
                         var layer = event.layer;
                         drawnItems.addLayer(layer);
+                        console.log(drawnItems);
                     })
 
                     var pla = places({
