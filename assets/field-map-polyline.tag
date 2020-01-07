@@ -16,7 +16,7 @@
 
     <script>
 
-        var map, marker;
+        var map, marker, polyline;
 
         var locale = document.documentElement.lang.toUpperCase();
 
@@ -35,17 +35,16 @@
         this.$updateValue = function(value) {
 
             if (!value) {
-                value = defaultpos;
+                value = [];
             }
 
-            if (this.latlng != value) {
-                this.latlng = value;
+            if (value && value.length) {
+                var [[lat, lng]] = value;
+                this.latlng = { lat, lng };
+            }
 
-                if (marker) {
-                    marker.setLatLng([this.latlng.lat, this.latlng.lng]).update();
-                    map.panTo(marker.getLatLng());
-                }
-
+            if(this.polyline !== value) {
+                this.polyline = value;
                 this.update();
             }
 
@@ -68,6 +67,7 @@
                     // FeatureGroup is to store editable layers
                     var drawnItems = new L.FeatureGroup();
                     map.addLayer(drawnItems);
+
                     var drawControl = new L.Control.Draw({
                         position: 'topright',
                         draw: {
@@ -84,16 +84,19 @@
                     });
                     map.addControl(drawControl);
 
+                    var initialPolyline = L.polyline($this.polyline, {color: 'red'}).addTo(drawnItems);
+                    map.fitBounds(initialPolyline.getBounds());
+
                     map.on('draw:drawstart', function (event) {
                         drawnItems.clearLayers();
                     })
                     map.on(L.Draw.Event.CREATED, function (event) {
                         var layer = event.layer;
                         drawnItems.addLayer(layer);
-                        var polyline = layer
+                        $this.polyline = layer
                             .getLatLngs()
                             .map(({lat, lng}) => [lat, lng]);
-                        $this.$setValue(polyline);
+                        $this.$setValue($this.polyline);
                     })
 
                     var pla = places({
