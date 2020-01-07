@@ -59,7 +59,7 @@
 
                 setTimeout(function(){
 
-                    var map = L.map($this.refs.map, {drawControl: true}).setView([$this.latlng.lat, $this.latlng.lng], opts.zoomlevel || 13);
+                    var map = L.map($this.refs.map).setView([$this.latlng.lat, $this.latlng.lng], opts.zoomlevel || 13);
 
                     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -69,6 +69,10 @@
                     var drawnItems = new L.FeatureGroup();
                     map.addLayer(drawnItems);
                     var drawControl = new L.Control.Draw({
+                        position: 'topright',
+                        draw: {
+                            polyline: true
+                        }
                         edit: {
                             featureGroup: drawnItems
                         }
