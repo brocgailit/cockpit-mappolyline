@@ -88,7 +88,9 @@
                         var layer = event.layer;
                         drawnItems.clearLayers();
                         drawnItems.addLayer(layer);
-                        var polyline = layer.getLatLngs().map(({lat, lng} => [lat, lng]));
+                        var polyline = layer
+                            .getLatLngs()
+                            .map(({lat, lng}) => [lat, lng]);
                         $this.$setValue(polyline);
                     })
 
