@@ -84,7 +84,7 @@
                     });
                     map.addControl(drawControl);
 
-                    map.on('draw:editstart', function (event) {
+                    map.on('draw:drawstart', function (event) {
                         drawnItems.clearLayers();
                     })
                     map.on(L.Draw.Event.CREATED, function (event) {
