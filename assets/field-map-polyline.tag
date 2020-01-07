@@ -85,6 +85,7 @@
                     map.addControl(drawControl);
 
                     map.on(L.Draw.Event.CREATED, function (event) {
+                        console.log(event);
                         var layer = event.layer;
                         drawnItems.addLayer(layer);
                     })
