@@ -84,8 +84,10 @@
                     });
                     map.addControl(drawControl);
 
-                    var initialPolyline = L.polyline($this.polyline, {color: '#d2451e'}).addTo(drawnItems);
-                    map.fitBounds(initialPolyline.getBounds());
+                    if($this.polyline && $this.polyline.length) {
+                        var initialPolyline = L.polyline($this.polyline, {color: '#d2451e'}).addTo(drawnItems);
+                        map.fitBounds(initialPolyline.getBounds());
+                    }
 
                     map.on('draw:drawstart', function (event) {
                         drawnItems.clearLayers();
