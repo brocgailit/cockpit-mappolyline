@@ -23,7 +23,9 @@
         var loadApi = App.assets.require([
             'https://cdn.jsdelivr.net/npm/leaflet@1.3.1/dist/leaflet.min.css',
             'https://cdn.jsdelivr.net/npm/leaflet@1.3.1/dist/leaflet.min.js',
-            'https://cdn.jsdelivr.net/npm/places.js@1.7.2/dist/cdn/places.min.js'
+            'https://cdn.jsdelivr.net/npm/places.js@1.7.2/dist/cdn/places.min.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css'
         ]);
 
         var $this = this, defaultpos = {lat:53.55909862554551, lng:9.998652343749995};
@@ -57,7 +59,7 @@
 
                 setTimeout(function(){
 
-                    var map = L.map($this.refs.map).setView([$this.latlng.lat, $this.latlng.lng], opts.zoomlevel || 13);
+                    var map = L.map($this.refs.map, {drawControl: true}).setView([$this.latlng.lat, $this.latlng.lng], opts.zoomlevel || 13);
 
                     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
