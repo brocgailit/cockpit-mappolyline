@@ -79,21 +79,12 @@
                     });
                     map.addControl(drawControl);
 
-                    var marker = new L.marker([$this.latlng.lat, $this.latlng.lng], {draggable:'true'});
-
-                    marker.on('dragend', function(e) {
-                        $this.$setValue(marker.getLatLng());
-                    });
-
-                    map.addLayer(marker);
-
                     var pla = places({
                         container: $this.refs.autocomplete
                     }).on('change', function(e) {
                         e.suggestion.latlng.address = e.suggestion.value;
                         $this.$setValue(e.suggestion.latlng);
-                        marker.setLatLng(e.suggestion.latlng).update();
-                        map.panTo(marker.getLatLng());
+                        map.panTo(e.suggestion.latlng);
                         pla.close();
                         pla.setVal('');
                     }).on('suggestions', function (e) {
@@ -109,8 +100,7 @@
                       };
 
                       $this.$setValue(latlng);
-                      marker.setLatLng(latlng).update();
-                      map.panTo(marker.getLatLng());
+                      map.panTo(latlng);
                       pla.close();
                       pla.setVal('');
                     });
