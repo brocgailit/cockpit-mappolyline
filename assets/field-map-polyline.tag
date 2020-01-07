@@ -74,7 +74,7 @@
                             polyline: true,
                             polygon: false,
                             circle: false,
-                            square: false,
+                            rectangle: false,
                             marker: false
                         },
                         edit: {
@@ -82,6 +82,11 @@
                         }
                     });
                     map.addControl(drawControl);
+
+                    map.on(L.Draw.Event.CREATED, function (event) {
+                        var layer = event.layer;
+                        drawnItems.addLayer(layer);
+                    })
 
                     var pla = places({
                         container: $this.refs.autocomplete
